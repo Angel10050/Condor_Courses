@@ -1,0 +1,32 @@
+.navBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: url(./../../img/bannerL.png) center; /* tamaño mas grande */
+  background-repeat: repeat;
+  height: 170px;
+  width: 100%;
+}
+.navBar__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+  letter-spacing: 2px;
+  color: white;
+  font-weight: 580;
+  align-self: center;
+  flex-direction: row;
+  font-size: 20px;
+}
+.InSectionCointainer {
+  display: flex;
+  align-self: flex-end;
+  margin: 0 35px 6px 0;
+  color: white;
+}
+.sectionDescription {
+  font-size: 13px;
+  padding-right: 15px;
+}

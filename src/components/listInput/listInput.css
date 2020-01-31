@@ -1,0 +1,17 @@
+.selectContainer {
+  background: url(./../../img/down-solid.svg);
+  background-position: right;
+  background-repeat: no-repeat;
+  border-right: inset 2px;
+  border: 1px solid rgb(194, 194, 250);
+  appearance: none;
+}
+select {
+  border: 2px solid rgb(194, 194, 250);
+  border-radius: 2px;
+  font-size: 18px;
+  padding: 10px 25px 10px 10px;
+  margin: 0 8px 0 8px;
+  color: white;
+  font-weight: 600;
+}
