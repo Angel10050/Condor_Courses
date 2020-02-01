@@ -1,10 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import NavBar from "../../components/navBar/NavBar";
+import Cards from "../../components/card/Cards";
 
-class Main extends Component {
-  render() {
-    return <NavBar />;
-  }
-}
+const Main = ({ state }) => {
+  return (
+    <>
+      <NavBar />
+      <Cards data={state.info} />
+    </>
+  );
+};
 
 export default Main;

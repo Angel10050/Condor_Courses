@@ -3,12 +3,13 @@ import axios from "axios";
 
 import "./App.css";
 import Main from "./pages/main/Main";
+import Loader from "./components/loader/Loader";
 
 class App extends Component {
   state = {
     loading: false,
     queryError: null,
-    info: {}
+    info: ""
   };
 
   componentDidMount() {
@@ -38,11 +39,17 @@ class App extends Component {
   };
 
   render() {
-    return (
-      <div className="App">
-        <Main />
-      </div>
-    );
+    if (this.state.loading || !this.state.info) {
+      return <Loader />;
+    } else if (this.state.queryError) {
+      return "error";
+    } else {
+      return (
+        <div className="App">
+          <Main state={this.state} />
+        </div>
+      );
+    }
   }
 }
 
