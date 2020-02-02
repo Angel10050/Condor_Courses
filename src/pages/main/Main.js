@@ -1,12 +1,14 @@
 import React from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Cards from "../../components/card/Cards";
+import Input from "../../components/input/Input";
 
 const Main = ({ state }) => {
   return (
     <>
       <NavBar />
-      <Cards data={state.info} />
+      <Input />
+      <Cards info={state.info.items} />
     </>
   );
 };

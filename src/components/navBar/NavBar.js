@@ -13,7 +13,10 @@ const NavBar = () => (
       <ListInput>
         <option>All states</option>
       </ListInput>
-      classified as {"[]  "}
+      classified as
+      <ListInput id="plusSelec">
+        <option>All states</option>
+      </ListInput>
       sorted by
       <ListInput>
         <option>Popularity</option>

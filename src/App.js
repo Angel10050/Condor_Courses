@@ -7,9 +7,12 @@ import Loader from "./components/loader/Loader";
 
 class App extends Component {
   state = {
+    url: "/api/courses?orderBy=popularity+desc&expand=provider&name=",
     loading: false,
     queryError: null,
-    info: ""
+    info: {
+      items: []
+    }
   };
 
   componentDidMount() {
@@ -23,12 +26,14 @@ class App extends Component {
     });
     try {
       const query = await axios.get(
-        "https://test.mytablemesa.com/api/courses?orderBy=popularity+desc&expand=provider&name="
+        `https://test.mytablemesa.com${this.state.url}`
       );
       this.setState({
         loading: false,
         queryError: null,
-        info: query.data
+        info: {
+          items: [].concat(this.state.info.items, query.data.items)
+        }
       });
     } catch (error) {
       this.setState({
@@ -37,13 +42,17 @@ class App extends Component {
       });
     }
   };
+  /* ------------------------------------------------------------------------------------------------ */
+
+  /* ------------------------------------------------------------------------------------------------ */
 
   render() {
-    if (this.state.loading || !this.state.info) {
+    console.log(this.state.info);
+    if (this.state.loading || !this.state.info.items) {
       return <Loader />;
     } else if (this.state.queryError) {
       return "error";
-    } else {
+    } else if (this.state.info.items) {
       return (
         <div className="App">
           <Main state={this.state} />

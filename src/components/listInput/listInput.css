@@ -10,8 +10,17 @@ select {
   border: 2px solid rgb(194, 194, 250);
   border-radius: 2px;
   font-size: 18px;
-  padding: 10px 25px 10px 10px;
+  padding: 11px 35px 11px 20px;
   margin: 0 8px 0 8px;
   color: white;
   font-weight: 600;
+}
+
+#plusSelec {
+  width: 60px;
+  background: url(./../../img/plus-solid.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  color: transparent;
+  appearance: none;
 }
