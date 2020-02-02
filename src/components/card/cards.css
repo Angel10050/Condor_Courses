@@ -1,0 +1,81 @@
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 65px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  justify-content: space-between;
+  width: 360px;
+  height: 260px;
+  box-shadow: 0px 1px 3px 1px rgba(80, 80, 80, 0.2);
+  margin: 10px 12px;
+  border-radius: 2px;
+}
+.credits_container_all {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 65px;
+  align-items: center;
+  box-shadow: 0px 1px 3px -1px rgba(128, 128, 128, 0.39);
+  background-color: rgba(243, 245, 247, 0.39);
+  padding: 0 17px 0 20px;
+}
+
+.__credits_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #d0d8dc;
+  border-radius: 50px;
+  height: 22px;
+  padding: 5px 18px;
+}
+.credits-txt {
+  font-size: 12px;
+  color: #82888a;
+  background-color: white;
+  font-weight: bolder;
+}
+
+/* -------------------------------------------la parte del medio---------------------------------- */
+.description_container {
+  padding: 0 0px 0 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 32px;
+}
+
+.courseImg {
+  width: 83px;
+  height: 83px;
+  position: relative;
+  top: 20px;
+  background-color: #796799;
+  border-radius: 3px;
+}
+
+.course_name {
+  font-size: 15px;
+}
+.course_provider {
+  font-size: 14px;
+  color: gray;
+}
+
+/* ---------------------------esta es la ultima parte de la card--------------------------------- */
+.price_rating_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 22px 18px 22px;
+}
+.course_price {
+  font-size: 19px;
+  font-weight: bold;
+  color: dodgerblue;
+}

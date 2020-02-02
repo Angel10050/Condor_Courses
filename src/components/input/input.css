@@ -1,0 +1,28 @@
+.input_container_all {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 83%;
+  height: 65px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+#courses {
+  width: 550px;
+  height: 20px;
+  font-size: 18px;
+  background-color: transparent;
+  padding: 10px 0 10px 35px;
+  border: none;
+  border-bottom: 1px solid rgb(209, 223, 230);
+  color: rgb(102, 102, 102);
+  background: url(./../../img/search-solid.svg);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+#courses::placeholder {
+  color: rgba(128, 128, 128, 0.411);
+}
+#courses:focus {
+  outline: none;
+}
