@@ -8,6 +8,7 @@ import Loader from "./components/loader/Loader";
 class App extends Component {
   state = {
     url: "/api/courses?orderBy=popularity+desc&expand=provider&name=",
+    page: 0,
     loading: false,
     queryError: null,
     info: {
@@ -16,8 +17,26 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.HandlerFetchData();
+    this.HandlerFetchData(); // initial data
+    document.addEventListener("scroll", this.loadMoreData);
   }
+
+  /* function to load more data */
+  loadMoreData = event => {
+    const {
+      scrollTop,
+      clientHeight,
+      scrollHeight
+    } = event.target.documentElement;
+
+    if (
+      scrollTop + clientHeight >= scrollHeight - 20 &&
+      this.state.url != null
+    ) {
+      return this.HandlerFetchData();
+    }
+  };
+  /* function to load more data */
 
   HandlerFetchData = async () => {
     this.setState({
@@ -30,6 +49,8 @@ class App extends Component {
       );
       this.setState({
         loading: false,
+        url: query.data.next,
+        page: this.state.page + 1,
         queryError: null,
         info: {
           items: [].concat(this.state.info.items, query.data.items)
@@ -47,15 +68,14 @@ class App extends Component {
   /* ------------------------------------------------------------------------------------------------ */
 
   render() {
-    console.log(this.state.info);
-    if (this.state.loading || !this.state.info.items) {
-      return <Loader />;
+    if (this.state.loading && this.state.page === 0) {
+      return <Loader className="loaderSection" />;
     } else if (this.state.queryError) {
       return "error";
     } else if (this.state.info.items) {
       return (
         <div className="App">
-          <Main state={this.state} />
+          <Main state={this.state} isLoading={this.state.loading} />
         </div>
       );
     }

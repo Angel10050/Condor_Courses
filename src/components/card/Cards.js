@@ -1,7 +1,8 @@
 import React from "react";
 import "./cards.css";
+import Loader from "../loader/Loader";
 
-const Cards = ({ info }) => {
+const Cards = ({ info, isLoading }) => {
   return (
     <div className="cardsContainer">
       {info.map((course, id) => {
@@ -36,6 +37,7 @@ const Cards = ({ info }) => {
           </div>
         );
       })}
+      {isLoading ? <Loader className="smallLoader" /> : ""}
     </div>
   );
 };

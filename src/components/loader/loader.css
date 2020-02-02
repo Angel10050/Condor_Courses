@@ -6,6 +6,16 @@
   flex-direction: column;
   align-items: center;
 }
+/* className for loader in the infinite scroll */
+.smallLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 300px;
+}
+/* className for loader in the infinite scroll */
 .loader-text {
   font-style: italic;
   font-size: 14px;

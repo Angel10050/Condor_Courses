@@ -1,7 +1,7 @@
 import React from "react";
 import "./loader.css";
-const Loader = () => (
-  <section className="loaderSection">
+const Loader = ({ className }) => (
+  <section className={className}>
     <p className="loader-text">Waiting for CoCourses</p>
     <div className="lds-1">
       <div></div>
