@@ -7,7 +7,7 @@ import ErrorPage from "./components/pageError/ErrorPage";
 
 class App extends Component {
   state = {
-    url: "/courses?orderBy=popularity+desc&expand=provider&name=",
+    url: "/api/courses?orderBy=popularity+desc&expand=provider&name=",
     page: 0,
     loading: false,
     queryError: null,
