@@ -1,15 +1,15 @@
 import React from "react";
 import "./input.css";
 
-const Input = ({ onChange, value }) => (
+const Input = ({ handlerOnchange, courseName }) => (
   <div className="input_container_all">
     <input
       placeholder="Search all courses"
       type="text"
-      name="courses"
-      id="courses"
-      onChange={onChange}
-      value={value}
+      name="courseName"
+      id="courseName"
+      onChange={handlerOnchange}
+      value={courseName}
     />
   </div>
 );

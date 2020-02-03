@@ -2,10 +2,12 @@ import React from "react";
 import "./cards.css";
 import Loader from "../loader/Loader";
 
-const Cards = ({ info, isLoading }) => {
+import StarRatings from "react-star-ratings";
+
+const Cards = ({ data, loading }) => {
   return (
     <div className="cardsContainer">
-      {info.map((course, id) => {
+      {data.map((course, id) => {
         return (
           <div key={id} className="card">
             <div className="credits_container_all">
@@ -32,12 +34,18 @@ const Cards = ({ info, isLoading }) => {
               <p className="course_price">
                 {course.price === 0 ? "FREE" : `$ ${course.price}`}
               </p>
-              <p>estrellas</p>
+              <StarRatings
+                rating={course.rating}
+                starRatedColor="#F6C943"
+                starDimension="20px"
+                starSpacing="1px"
+                starEmptyColor="#E6EBED"
+              />
             </div>
           </div>
         );
       })}
-      {isLoading ? <Loader className="smallLoader" /> : ""}
+      {loading ? <Loader className="smallLoader" /> : ""}
     </div>
   );
 };

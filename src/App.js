@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-
 import "./App.css";
 import Main from "./pages/main/Main";
 import Loader from "./components/loader/Loader";
@@ -13,7 +12,13 @@ class App extends Component {
     queryError: null,
     info: {
       items: []
-    }
+    },
+    filterInfo: {
+      filtredItems: [],
+      thereIsNextPage: null
+    },
+    filterError: null,
+    courseName: ""
   };
 
   componentDidMount() {
@@ -31,7 +36,7 @@ class App extends Component {
 
     if (
       scrollTop + clientHeight >= scrollHeight - 20 &&
-      this.state.url != null
+      this.state.url != null // Load data if the "next" property exists
     ) {
       return this.HandlerFetchData();
     }
@@ -40,7 +45,6 @@ class App extends Component {
 
   HandlerFetchData = async () => {
     this.setState({
-      queryError: null,
       loading: true
     });
     try {
@@ -51,7 +55,6 @@ class App extends Component {
         loading: false,
         url: query.data.next,
         page: this.state.page + 1,
-        queryError: null,
         info: {
           items: [].concat(this.state.info.items, query.data.items)
         }
@@ -63,19 +66,42 @@ class App extends Component {
       });
     }
   };
-  /* ------------------------------------------------------------------------------------------------ */
 
-  /* ------------------------------------------------------------------------------------------------ */
+  HandlerFilter = async () => {
+    try {
+      const filtredQuery = await axios.get(
+        `https://test.mytablemesa.com/api/courses?orderBy=popularity+desc&expand=provider&name=${this.state.courseName}`
+      );
+      this.setState({
+        filterInfo: {
+          filtredCourses: filtredQuery.data.items,
+          thereIsNextPage: filtredQuery.data.next
+        }
+      });
+    } catch (error) {
+      this.setState({
+        filterError: error.message
+      });
+    }
+  };
+
+  handlerOnchange = event => {
+    const { id, value } = event.target;
+    this.setState({
+      [id]: value
+    });
+    this.HandlerFilter();
+  };
 
   render() {
     if (this.state.loading && this.state.page === 0) {
       return <Loader className="loaderSection" />;
     } else if (this.state.queryError) {
       return "error";
-    } else if (this.state.info.items) {
+    } else {
       return (
         <div className="App">
-          <Main state={this.state} isLoading={this.state.loading} />
+          <Main state={this.state} handlerOnchange={this.handlerOnchange} />
         </div>
       );
     }
