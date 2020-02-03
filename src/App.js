@@ -6,7 +6,7 @@ import Loader from "./components/loader/Loader";
 
 class App extends Component {
   state = {
-    url: "/api/courses?orderBy=popularity+desc&expand=provider",
+    url: "/api/courses?orderBy=popularity+desc&expand=provider&name=",
     page: 0,
     loading: false,
     queryError: null,
@@ -49,7 +49,9 @@ class App extends Component {
     });
 
     try {
-      const query = await axios.get(this.state.url);
+      const query = await axios.get(
+        `https://test.mytablemesa.com${this.state.url}`
+      );
       this.setState({
         loading: false,
         url: query.data.next,
@@ -69,7 +71,7 @@ class App extends Component {
   HandlerFilter = async () => {
     try {
       const filtredQuery = await axios.get(
-        `/api/courses?orderBy=popularity+desc&expand=provider&name=${this.state.courseName}`
+        `https://test.mytablemesa.com/api/courses?orderBy=popularity+desc&expand=provider&name=${this.state.courseName}`
       );
       this.setState({
         filterInfo: {
