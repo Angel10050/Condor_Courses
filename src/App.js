@@ -70,7 +70,8 @@ class App extends Component {
   HandlerFilter = async () => {
     try {
       const filtredQuery = await axios.get(
-        `/api/courses?orderBy=popularity+desc&expand=provider&name=${this.state.courseName}`
+        `/api/courses?orderBy=popularity+desc&expand=provider&name=${this.state.courseName}`,
+        { headers: { "Access-Control-Allow-Origin": "*" } }
       );
       this.setState({
         filterInfo: {
