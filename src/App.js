@@ -6,7 +6,7 @@ import Loader from "./components/loader/Loader";
 
 class App extends Component {
   state = {
-    url: "/api/courses?orderBy=popularity+desc&expand=provider&name=",
+    url: "/api/courses?orderBy=popularity+desc&expand=provider",
     page: 0,
     loading: false,
     queryError: null,
@@ -69,7 +69,7 @@ class App extends Component {
   HandlerFilter = async () => {
     try {
       const filtredQuery = await axios.get(
-        `https://test.mytablemesa.com/api/courses?orderBy=popularity+desc&expand=provider&name=${this.state.courseName}`
+        `/api/courses?orderBy=popularity+desc&expand=provider&name=${this.state.courseName}`
       );
       this.setState({
         filterInfo: {
