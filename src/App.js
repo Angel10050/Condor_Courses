@@ -3,10 +3,11 @@ import axios from "axios";
 import "./App.css";
 import Main from "./pages/main/Main";
 import Loader from "./components/loader/Loader";
+import ErrorPage from "./components/pageError/ErrorPage";
 
 class App extends Component {
   state = {
-    url: "/api/courses?orderBy=popularity+desc&expand=provider&name=",
+    url: "/rses?orderBy=popularity+desc&expand=provider&name=",
     page: 0,
     loading: false,
     queryError: null,
@@ -96,7 +97,7 @@ class App extends Component {
     if (this.state.loading && this.state.page === 0) {
       return <Loader className="loaderSection" />;
     } else if (this.state.queryError) {
-      return "error";
+      return <ErrorPage errorMessage={this.state.queryError} />;
     } else {
       return (
         <div className="App">
