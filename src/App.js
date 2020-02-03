@@ -50,7 +50,10 @@ class App extends Component {
     });
 
     try {
-      const query = await axios.get(this.state.url);
+      const query = await axios.get(
+        `https://test.mytablemesa.com${this.state.url}`,
+        { headers: { "Access-Control-Allow-Origin": "*" } }
+      );
       this.setState({
         loading: false,
         url: query.data.next,
@@ -70,7 +73,7 @@ class App extends Component {
   HandlerFilter = async () => {
     try {
       const filtredQuery = await axios.get(
-        `/api/courses?orderBy=popularity+desc&expand=provider&name=${this.state.courseName}`,
+        `https://test.mytablemesa.com/api/courses?orderBy=popularity+desc&expand=provider&name=${this.state.courseName}`,
         { headers: { "Access-Control-Allow-Origin": "*" } }
       );
       this.setState({
