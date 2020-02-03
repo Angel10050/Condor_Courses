@@ -49,9 +49,7 @@ class App extends Component {
     });
 
     try {
-      const query = await axios.get(
-        `https://test.mytablemesa.com${this.state.url}`
-      );
+      const query = await axios.get(this.state.url);
       this.setState({
         loading: false,
         url: query.data.next,
@@ -71,7 +69,7 @@ class App extends Component {
   HandlerFilter = async () => {
     try {
       const filtredQuery = await axios.get(
-        `https://test.mytablemesa.com/api/courses?orderBy=popularity+desc&expand=provider&name=${this.state.courseName}`
+        `/api/courses?orderBy=popularity+desc&expand=provider&name=${this.state.courseName}`
       );
       this.setState({
         filterInfo: {
